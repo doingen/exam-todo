@@ -12,6 +12,6 @@ class Todolist extends Model
     protected $fillable = ['content'];
 
     public static $rules = array(
-        'content' => 'required', 'min:0|max:20'
+        'content' => 'required|max:20'
     );
 }
