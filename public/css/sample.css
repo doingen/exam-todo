@@ -55,12 +55,16 @@
   background-color: rgb(239, 128, 239);
 }
 
+.inner__added{
+  margin-top: 10px
+}
+
 table{
   width: 100%;
   text-align: center;
 }
 
-form th, form td {
+.inner__added th, .inner__added td {
   height: 2.5em;
   vertical-align: middle;
 }
@@ -96,3 +100,5 @@ th:nth-child(1){
 .delete-button:hover{
   background-color: rgb(0, 250, 229);
 }
+
+

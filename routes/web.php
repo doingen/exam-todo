@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Todocontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,18 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-Route::get('/', [TodoController::class, 'index']);
-Route::post('/todo/create', [TodoController::class, 'create']);
-Route::post('/todo/update', [TodoController::class, 'update']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('/todo', [TodoController::class, 'index'])->middleware(['auth']);
+Route::post('/todo/create', [TodoController::class, 'create'])
+->middleware(['auth'])->name('todo.create');
+Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.update');
 Route::post('/todo/delete', [TodoController::class, 'delete']);
